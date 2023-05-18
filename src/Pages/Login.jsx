@@ -6,7 +6,7 @@ import { AuthContext } from "./provider/AuthProvider";
 
 
 const Login = () => {
-    const {loginEmailPassword} = useContext(AuthContext)
+    const {loginEmailPassword,  loginGoogle} = useContext(AuthContext)
     const handleLogin = event =>{
         event.preventDefault()
         const form = event.target;
@@ -21,10 +21,20 @@ const Login = () => {
             console.log(error.message)
         })
     }
-    
+    const handleGoogle = () =>{
+        loginGoogle()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+    }
     return (
         <form onSubmit={handleLogin}>
+           
             <div className="hero min-h-screen bg-base-200">
+          
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div >
      <img style={{height:'400px', width:'550px'}} src="https://msinpoland.com/wp-content/uploads/2020/10/Documents-for-University.png" alt="" />
@@ -48,6 +58,8 @@ const Login = () => {
           <input type="submit" className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500" value="Login" />
         </div>
         <h3>Are you new toys hut ? <Link className="text-sky-500" to='/register'> Register</Link></h3>
+          
+        <img onClick={handleGoogle} className="h-20 btn btn-ghost  " src="https://global.discourse-cdn.com/business5/uploads/webflow1/original/3X/2/4/24bc102eccbabdb30b5ec93447732ead235d5549.png" alt="" />
       </div>
     </div>
   </div>
