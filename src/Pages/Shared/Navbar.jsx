@@ -20,7 +20,10 @@ const Navbar = () => {
         {nav}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <div className="block">
+    <img className="h-12 w-12 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf668u6i-7B_uWz8rlAwhYmVWEvNRgfJyvgA&usqp=CAU" alt="" />
+    <Link className="font-semibold" to='/'><i>Toys Hut</i></Link>
+    </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -28,7 +31,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Get started</a>
+   <Link className="btn border-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" to='/login'>Login</Link>
   </div>
 </div>
     );
