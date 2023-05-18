@@ -1,15 +1,35 @@
+
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./provider/AuthProvider";
+
 
 
 const Login = () => {
+    const {loginEmailPassword} = useContext(AuthContext)
+    const handleLogin = event =>{
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+        loginEmailPassword(email, password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+    }
+    
     return (
-        <div>
+        <form onSubmit={handleLogin}>
             <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div >
      <img style={{height:'400px', width:'550px'}} src="https://msinpoland.com/wp-content/uploads/2020/10/Documents-for-University.png" alt="" />
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div  className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div className="card-body">
         <div className="form-control">
           <label className="label">
@@ -33,7 +53,7 @@ const Login = () => {
   </div>
 </div>
 
-        </div>
+        </form>
     );
 };
 
