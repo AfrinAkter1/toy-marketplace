@@ -1,14 +1,15 @@
 import { useContext, } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
     const {user, loading, logOut} = useContext(AuthContext);
     if(loading){
         return 'loading........'
     }
-   
+  //  console.log(user.photoURL)
     const handleLogOut = () =>{
         logOut()
         .then()
@@ -37,6 +38,7 @@ const Navbar = () => {
     <div className="block">
     <img className="h-12 w-12 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf668u6i-7B_uWz8rlAwhYmVWEvNRgfJyvgA&usqp=CAU" alt="" />
     <Link className="font-semibold" to='/'><i>Toys Hut</i></Link>
+    
     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -45,9 +47,27 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
+  
  { user ?
-  <Link onClick={handleLogOut} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">logOut</Link> :
-   <Link className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500" to='/login'>Login</Link>}
+ <>
+ <a
+  data-tooltip-id="my-tooltip"
+  data-tooltip-content={user?.displayName}
+  data-tooltip-place="top"
+>
+<img className="h-12 w-12 rounded-full mr-5" src={user?.photoURL} alt="" />
+</a>
+<Tooltip id="my-tooltip" />
+
+ <Link onClick={handleLogOut} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">logOut</Link>
+
+ </>
+   :
+   <>
+     <Link className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500" to='/login'>Login</Link>
+     <Link className="mx-4 btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500" to='/register'>Register</Link>
+   </>
+ }
   </div>
 </div>
     );

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 
 
@@ -9,19 +9,36 @@ const provider = new GoogleAuthProvider()
 const AuthProvider = ({children}) => {
 const [user, setUser] = useState(null)
 const [loading, setLoading] = useState(true)
+
+// register
  const signInEmail = (email, password)=>{
     setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
  }
+
+//  login use email password
  const loginEmailPassword = (email, password) =>{
     setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
  }
+
+
+//  google login
 const loginGoogle = () =>{
     setLoading(true)
     return signInWithPopup(auth, provider)
 }
 
+// update profile
+const handleProfile = (user,name, photourl) =>{
+   return updateProfile(user, {
+        displayName: name,
+        photoURL: photourl
+
+    })
+}
+
+// check user
 useEffect(() =>{
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
         
@@ -34,15 +51,21 @@ useEffect(() =>{
     }
 },[])
 
+
+// LogOut
 const logOut = () =>{
     setLoading(true)
     return signOut(auth)
 
 }
+
+
+
     const authInfo ={
         signInEmail,
         loginEmailPassword,
         loginGoogle,
+        handleProfile,
         user,
         logOut,
         loading
