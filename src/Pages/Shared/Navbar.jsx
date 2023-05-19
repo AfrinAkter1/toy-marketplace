@@ -5,9 +5,9 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
     const {user, loading, logOut} = useContext(AuthContext);
-    // if(loading){
-    //     return 'loading........'
-    // }
+    if(loading){
+        return 'loading........'
+    }
    
     const handleLogOut = () =>{
         logOut()
@@ -45,7 +45,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
- { user ? <Link onClick={handleLogOut} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">logOut</Link> :
+ { user ?
+  <Link onClick={handleLogOut} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">logOut</Link> :
    <Link className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500" to='/login'>Login</Link>}
   </div>
 </div>

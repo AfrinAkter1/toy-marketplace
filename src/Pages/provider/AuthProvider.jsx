@@ -7,33 +7,37 @@ export const AuthContext = createContext()
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
 const AuthProvider = ({children}) => {
-const [user, setUser] = useState([])
-// const [loading, setLoading] = useState(true)
+const [user, setUser] = useState(null)
+const [loading, setLoading] = useState(true)
  const signInEmail = (email, password)=>{
-    // setLoading(true)
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
  }
  const loginEmailPassword = (email, password) =>{
-    // setLoading(true)
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
  }
 const loginGoogle = () =>{
-    // setLoading(true)
+    setLoading(true)
     return signInWithPopup(auth, provider)
 }
 
 useEffect(() =>{
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-        // setLoading(false)
+        
       setUser(currentUser)
       console.log('current user', currentUser)
+      setLoading(false)
     })
-    return unsubscribe()
+    return () =>{
+        return unsubscribe()
+    }
 },[])
 
 const logOut = () =>{
-    // setLoading(false)
+    setLoading(true)
     return signOut(auth)
+
 }
     const authInfo ={
         signInEmail,
@@ -41,7 +45,7 @@ const logOut = () =>{
         loginGoogle,
         user,
         logOut,
-        // loading
+        loading
     }
     return (
         <AuthContext.Provider value={authInfo}>

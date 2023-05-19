@@ -5,7 +5,7 @@ const Gallery = () => {
         <div className="mt-16 ">
             <h2 className="text-4xl text-center font-bold mb-8"><i>Our Gallery</i></h2>
             <Marquee pauseOnHover="true">
-            <div className="grid gap-11 md:grid-cols-3">
+            <div className="grid gap-11 grid-cols-3">
             <div className="card h-60 w-96 bg-base-100 shadow-xl ">
   <figure><img className="" src="https://i.ibb.co/nmd1TdD/giorgio-trovato-p-Ge-DU93n0f-Q-unsplash.jpg" alt="Shoes" /></figure>
   <div className="card-body">
