@@ -7,9 +7,9 @@ import { Tooltip } from 'react-tooltip'
 const Navbar = () => {
     const {user, loading, logOut} = useContext(AuthContext);
     if(loading){
-        return 'loading........'
+        return <progress className="progress w-56 "></progress>
     }
-  //  console.log(user.photoURL)
+  
     const handleLogOut = () =>{
         logOut()
         .then()
@@ -33,6 +33,10 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         {nav}
+        {/* { user? <>
+   
+    </>
+  } */}
       </ul>
     </div>
     <div className="block">
@@ -50,6 +54,8 @@ const Navbar = () => {
   
  { user ?
  <>
+
+ {/* tooltip */}
  <a
   data-tooltip-id="my-tooltip"
   data-tooltip-content={user?.displayName}
@@ -58,6 +64,8 @@ const Navbar = () => {
 <img className="h-12 w-12 rounded-full mr-5" src={user?.photoURL} alt="" />
 </a>
 <Tooltip id="my-tooltip" />
+
+
 
  <Link onClick={handleLogOut} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">logOut</Link>
 

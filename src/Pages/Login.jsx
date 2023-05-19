@@ -1,24 +1,35 @@
 
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate,  } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 
 
 
 const Login = () => {
+
     const {loginEmailPassword,  loginGoogle} = useContext(AuthContext)
+    const [error, setError] = useState("")
+    const navgate = useNavigate()
+    const location = useLocation()
+    console.log(location)
+    const from = location.state?.from?.pathname || '/'
     const handleLogin = event =>{
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        
         loginEmailPassword(email, password)
         .then(result => {
             console.log(result.user)
+            navgate(from, {replace:true})
+            
         })
         .catch(error => {
             console.log(error.message)
+            setError(error.message)
+
         })
     }
     const handleGoogle = () =>{
@@ -57,6 +68,7 @@ const Login = () => {
         <div className="form-control mt-6">
           <input type="submit" className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500" value="Login" />
         </div>
+        <p className="text-red-600">{error}</p>
         <h3>Are you new toys hut ? <Link className="text-sky-500" to='/register'> Register</Link></h3>
           
         <img onClick={handleGoogle} className="h-20 btn btn-ghost  " src="https://global.discourse-cdn.com/business5/uploads/webflow1/original/3X/2/4/24bc102eccbabdb30b5ec93447732ead235d5549.png" alt="" />

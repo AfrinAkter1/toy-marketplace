@@ -1,11 +1,12 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 
 
 const Register = () => {
     const {signInEmail, handleProfile} = useContext(AuthContext)
-  
+  const [error , setError]= useState('')
+  const navigate = useNavigate()
     const handleRegister = event =>{
         event.preventDefault();
         const form = event.target;
@@ -15,26 +16,36 @@ const Register = () => {
         const photo = form.photo.value;
         console.log(name, email, password, photo)
 
+        if(password.length < 6){
+            setError("your password have been 6 char")
+            return
+        }
+
 
         //  register 
         signInEmail(email, password)
         .then(result => {
            const createdUser = result.user;
            // update profile
-           handleProfile(createdUser, name, photo )
+           updateProfile(createdUser, name, photo )
+          
             console.log(createdUser)
+            navigate('/')
         })
         .catch(error => {
             console.log(error.message)
         })
+}
 
 
-        
-        
-
-
-    }
-
+// updateProfile name and photo
+  const updateProfile = ( currentUser, name, photo ) =>{
+    handleProfile(currentUser, name, photo)
+    .then()
+    .catch(err => {
+      console.log(err.message)
+    })
+  }
 
     return (
   
@@ -73,6 +84,7 @@ const Register = () => {
         <div className="form-control mt-6">
           <input type="submit" className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500" value="Register" />
         </div>
+        <p className="text-red-500">{error}</p>
         <p>Already have an account? <Link className="text-blue-500" to='/login'>Login</Link></p>
       </form>
     </div>
