@@ -1,3 +1,4 @@
+import Category from "../../Category";
 import Gallery from "../../Gallery";
 import Banner from "./banner/Banner";
 
@@ -7,6 +8,7 @@ const Home = () => {
         <div >
             <Banner></Banner>
             <Gallery></Gallery>
+            <Category></Category>
             this is home
         </div>
     );

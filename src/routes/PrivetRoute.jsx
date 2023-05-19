@@ -6,7 +6,10 @@ import { AuthContext } from "../Pages/provider/AuthProvider";
 const PrivetRoute = ({children}) => {
     const location = useLocation()
    
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
+    if(loading){
+        return <progress className="progress w-56 "></progress>
+    }
     if(user){
            return children
     }

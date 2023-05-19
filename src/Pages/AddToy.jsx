@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { AuthContext } from "./provider/AuthProvider";
 
 const AddToy = () => {
+    const {user} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
     console.log(data)
@@ -49,14 +52,14 @@ const AddToy = () => {
 
      <div>
      <p className="text-base font-bold">Seller Name: </p>
-      <input className="p-4 w-full border-2" placeholder="Seller Name" {...register("sellerName", { required: true })} /> {errors.exampleRequired && <span>This field is required</span>}
+      <input className="p-4 w-full border-2" defaultValue={user?.displayName} placeholder="Seller Name" {...register("sellerName", { required: true })} /> {errors.exampleRequired && <span>This field is required</span>}
      
      </div>
 
 
      <div>
      <p className="text-base font-bold">Seller Email</p>
-      <input className="p-4 w-full border-2" placeholder="Seller Email" {...register("sellerEmail", { required: true })} /> {errors.exampleRequired && <span>This field is required</span>}
+      <input className="p-4 w-full border-2" defaultValue={user?.email} placeholder="Seller Email" {...register("sellerEmail", { required: true })} /> {errors.exampleRequired && <span>This field is required</span>}
       
 
      </div>
@@ -90,7 +93,7 @@ const AddToy = () => {
 
      <div>
      <p className="text-base font-bold">Car type: </p>
-     <select className="p-4 w-full border-2"  {...register("Car Type")}>
+     <select className="p-4 w-full border-2"  {...register("carType")}>
         <option value="privetCar">Privet car</option>
         <option value="bus">Bus</option>
         <option value="Truck">Truck car</option>

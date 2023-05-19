@@ -15,8 +15,8 @@ const Banner = () => {
   
 </div>
 <div>
-    <img className="h-20  hover:h-24 hover:opacity-100 hover:duration-700 absolute rounded-full opacity-60 bottom-5 right-20" src="https://img.freepik.com/free-vector/yellow-sports-car_1308-96215.jpg?w=1380&t=st=1684415352~exp=1684415952~hmac=3fafcc872d36901d66b1a85257afe19e33c2a1fbb7c786b68994ed2a9db15f6c" alt="" />
-    <img className="h-20 hover:h-24 hover:opacity-100 hover:duration-700 absolute rounded-full opacity-60 bottom-5 md:right-72" src="https://img.freepik.com/free-vector/blue-vintage-convertible-car-cartoon-style_1308-107676.jpg?size=626&ext=jpg&ga=GA1.1.977297310.1680196639&semt=ais" alt="" />
+    <img className="h-20  hover:h-24 hover:opacity-100 hover:duration-700 absolute rounded-full opacity-60 bottom-5 md:right-32 right-0" src="https://img.freepik.com/free-vector/yellow-sports-car_1308-96215.jpg?w=1380&t=st=1684415352~exp=1684415952~hmac=3fafcc872d36901d66b1a85257afe19e33c2a1fbb7c786b68994ed2a9db15f6c" alt="" />
+    <img className="h-20 hover:h-24 hover:opacity-100 hover:duration-700 absolute rounded-full opacity-60 bottom-5 md:right-80" src="https://img.freepik.com/free-vector/blue-vintage-convertible-car-cartoon-style_1308-107676.jpg?size=626&ext=jpg&ga=GA1.1.977297310.1680196639&semt=ais" alt="" />
     
   </div>
 </div>

@@ -19,13 +19,19 @@ const Navbar = () => {
     }
     const nav = <>
     <li><Link to='/'>Home</Link></li>
-    <li><Link to='/alltoys'>All Toys</Link></li>
+    
+   {user? <>
+   <li><Link to='/alltoys'>All Toys</Link></li>
     <li><Link to='/mytoys'>My Toys</Link></li>
     <li><Link to='/addtoys'>Add Toy</Link></li>
+    </> 
+  :""
+  }
     <li><Link to='/blogs'>Blogs</Link></li>
-    </>
+  
+  </>
     return (
-        <div className="navbar bg-base-300 sticky top-0 px-10">
+        <div className="navbar bg-base-300 px-10">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -33,10 +39,7 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         {nav}
-        {/* { user? <>
-   
-    </>
-  } */}
+      
       </ul>
     </div>
     <div className="block">
