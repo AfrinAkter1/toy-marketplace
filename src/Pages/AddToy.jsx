@@ -33,7 +33,7 @@ const AddToy = () => {
 
     return (
         <div className="my-10 ">
-            <p className="text-4xl font-bold text-center"><i>Add A Toy Car</i></p>
+            <p className="text-4xl font-bold text-center"><i>Add A  <span className="text-pink-500">Toy Car</span></i></p>
            
             <form className="space-y-4 p-5 grid grid-cols-2 gap-4" onSubmit={handleSubmit(onSubmit)}>
     

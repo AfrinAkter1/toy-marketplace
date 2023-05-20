@@ -8,7 +8,7 @@ const Footer = () => {
 
             <div>
             <img className="h-12 w-12 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf668u6i-7B_uWz8rlAwhYmVWEvNRgfJyvgA&usqp=CAU" alt="" />
-    <p className="font-semibold"><i>Toys Hut</i></p>
+    <p className="font-semibold"><i>Toys  <span className="text-pink-500">Hut</span></i></p>
   </div>              
   <div>
     <span className="footer-title">Services</span> 

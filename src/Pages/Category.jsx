@@ -32,8 +32,8 @@ const Category = () => {
     
 
     return (
-        <div className='my-10'>
-            <h3 className="text-center font-bold text-3xl my-10"><i>Category</i></h3>
+        <div className='my-14'>
+            <h3 className="text-center font-bold text-3xl my-10"><i> <span className="text-pink-500">All </span>Category</i></h3>
  
 
             <Tabs>
