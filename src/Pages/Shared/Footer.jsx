@@ -40,6 +40,7 @@ const Footer = () => {
 </footer>
 <footer className="footer bg-base-300 pb-5 text-base-content flex justify-center">
 <div >
+  <hr className="border border-x-2" />
   <p className="text-center"><i>Copyright © 2023 - All right reserved by toys hut</i></p>
   </div>
 </footer>

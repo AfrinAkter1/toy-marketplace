@@ -2,7 +2,7 @@ import Marquee from "react-fast-marquee";
 
 const Gallery = () => {
     return (
-        <div className="mt-16 ">
+        <div className="mt-16 pl-5">
             <h2 className="text-4xl text-center font-bold mb-8"><i>Our  <span className="text-pink-500">Gallery</span></i></h2>
             <Marquee pauseOnHover="true">
             <div className="grid gap-11 grid-cols-3">

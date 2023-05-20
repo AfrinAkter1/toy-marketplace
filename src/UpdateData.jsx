@@ -8,11 +8,11 @@ import Swal from "sweetalert2";
 
 const UpdateData = () => {
     const toyDetails = useLoaderData()
-    console.log(toyDetails)
+   
     const {user} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-    console.log(data)
+    
 
     fetch(`http://localhost:5000/alltoys/${toyDetails._id}`,{
         method: 'PUT',

@@ -14,7 +14,7 @@ const MyToys = () => {
         .then(res => res.json())
         .then(data => setMyToys(data))
     },[user])
-    console.log(myToys)
+    // console.log(myToys)
     if(loading){
       return 'loading.....'
     }

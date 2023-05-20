@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
+import { Link } from 'react-router-dom';
 
 const Category = () => {
     const [policeCar, setPoliceCar] = useState([])
@@ -32,7 +33,7 @@ const Category = () => {
     
 
     return (
-        <div className='my-14'>
+        <div className='my-14 px-36'>
             <h3 className="text-center font-bold text-3xl my-10"><i> <span className="text-pink-500">All </span>Category</i></h3>
  
 
@@ -60,7 +61,8 @@ const Category = () => {
       readOnly
     /></small> </p>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">View Details</button>
+      <Link to={`/viewdetails/${police._id}`} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">View Details</Link>
+     
     </div>
   </div>
 </div>
@@ -85,7 +87,7 @@ const Category = () => {
       readOnly
     /></small> </p>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">View Details</button>
+      <Link to={`/viewdetails/${police._id}`} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">View Details</Link>
     </div>
   </div>
 </div>
@@ -110,7 +112,7 @@ const Category = () => {
       readOnly
     /></small> </p>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">View Details</button>
+      <Link to={`/viewdetails/${police._id}`} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">View Details</Link>
     </div>
   </div>
 </div>
