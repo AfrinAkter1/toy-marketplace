@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import AllToys from "./AllToys";
+
 
 
 const MyToys = () => {
@@ -44,7 +44,7 @@ const MyToys = () => {
            
             Swal.fire(
               'Deleted!',
-              'Your file has been deleted.',
+              'Your Toy has been deleted.',
               'success'
             )
             const remaining = myToys.filter(cof => cof._id !== _id)
@@ -78,11 +78,15 @@ const MyToys = () => {
     <thead>
       <tr>
         <th></th>
+        <th>Image</th>
         <th>Seller Name</th> 
         <th>Toy Name</th> 
+        <th>Seller Email</th>
         <th>Sub category</th> 
         <th>price</th> 
         <th>Quantity</th> 
+        <th>Rating</th>
+        <th>Description</th>
         <th><Link>view details</Link></th>
       </tr>
     </thead> 
@@ -93,12 +97,16 @@ const MyToys = () => {
                 <td><button onClick={()=>handleDelete(allToy._id)} className="btn btn-circle btn-outline">
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
 </button></td>
+<td><img className="h-24 w-24 rounded-full" src={allToy.toyPicture} alt="" /></td>
                  <td>{allToy.sellerName}</td> 
                 <td>{allToy.toyName}</td> 
+                <td>{allToy.sellerEmail}</td>
                 <td>{allToy.carType}</td> 
                  <td>{allToy.price}</td> 
                <td>{allToy.quantity}</td> 
-              <td><Link className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">Update</Link></td>
+               <td>{allToy.rating}</td>
+               <td>{allToy.details}</td>
+              <td><Link to={`/update/${allToy._id}`} className="btn border-0 bg-gradient-to-r  from-purple-500 to-pink-500">Update</Link></td>
             </tr> )
         }
         
