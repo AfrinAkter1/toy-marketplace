@@ -4,7 +4,7 @@ import { FaLocationArrow, FaMailBulk, FaPhone } from 'react-icons/fa';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-base-300 text-base-content">
+            <footer className="footer  md:p-10 bg-base-300 text-base-content">
 
             <div>
             <img className="h-12 w-12 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf668u6i-7B_uWz8rlAwhYmVWEvNRgfJyvgA&usqp=CAU" alt="" />

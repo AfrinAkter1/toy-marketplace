@@ -2,9 +2,14 @@ import {  useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { Rating } from '@smastrom/react-rating'
-
 import '@smastrom/react-rating/style.css'
 import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init({ duration: 1200});
+
+
 
 const Category = () => {
     const [policeCar, setPoliceCar] = useState([])
@@ -50,7 +55,7 @@ const Category = () => {
     </TabList>
 
     <TabPanel>
-        <div data-aos="fade-left" className='grid md:grid-cols-2 gap-4'>
+        <div data-aos="zoom-in" className='grid md:grid-cols-2 gap-4'>
         {
             policeCar.map(police => <div
             key={police._id}

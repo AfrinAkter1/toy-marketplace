@@ -40,7 +40,7 @@ const Navbar = () => {
     <li><Link to='/blogs'><i>Blogs</i></Link></li>
   </>
     return (
-        <div data-aos="fade-down" className="navbar bg-base-300 px-10">
+        <div data-aos="fade-down" className="navbar bg-base-300 md:px-10">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
