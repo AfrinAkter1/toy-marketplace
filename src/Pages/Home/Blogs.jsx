@@ -1,6 +1,8 @@
+import UseTitle from "../../UseTitle";
 
 
 const Blogs = () => {
+    UseTitle('Blogs')
     return (
         <div className="space-y-7 my-11">
           <div>

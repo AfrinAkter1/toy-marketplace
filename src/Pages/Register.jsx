@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
+import UseTitle from "../UseTitle";
 
 
 const Register = () => {
     const {signInEmail, handleProfile} = useContext(AuthContext)
   const [error , setError]= useState('')
   const navigate = useNavigate()
+  UseTitle('Register')
     const handleRegister = event =>{
         event.preventDefault();
         const form = event.target;
@@ -78,7 +80,7 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Photo URL</span>
           </label>
-          <input type="url" name="photo" placeholder="password" className="input input-bordered" />
+          <input type="url" name="photo" placeholder="Photo URL" className="input input-bordered" />
           
         </div>
         <div className="form-control mt-6">

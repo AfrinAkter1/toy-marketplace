@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { FaLocationArrow, FaMailBulk, FaPhone } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -32,7 +32,38 @@ const Footer = () => {
       <Link to='https://www.facebook.com/'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></Link >
     </div>
   </div>
+
+
+
+
   <div>
+    <div className="flex items-center space-x-2">
+    <FaLocationArrow className="w-6 h-10"/>
+    
+ <div>
+  <h3 className="font-bold ">Find us</h3>
+  <p>1010 Avenue, sw 54321, Bangladesh</p>
+ </div>
+ </div>
+
+
+ <div className="flex items-center space-x-2">
+    <FaPhone className="w-6 h-10"/>
+ <div>
+  <h3 className="font-bold ">Call us</h3>
+  <p>9876543210 0</p>
+ </div>
+</div>
+
+
+<div className="flex items-center space-x-2">
+    <FaMailBulk className="w-6 h-10"/>
+ <div>
+  <h3 className="font-bold ">Mail us</h3>
+  <p>mail@info.com</p>
+ </div>
+</div>
+
 
   </div>
   

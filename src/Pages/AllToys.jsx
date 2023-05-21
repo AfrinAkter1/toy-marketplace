@@ -1,30 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UseTitle from "../UseTitle";
 
 
 const AllToys = () => {
     const [allToys, setallToys] = useState([])
     const [search,setSearch] = useState([])
    const alltoy = allToys.slice(0, 20)
-   
+   UseTitle('All Toys')
+  //  All cars fetch
     useEffect(() =>{
-        fetch('http://localhost:5000/allcars')
+        fetch('https://toy-website-server.vercel.app/allcars')
         .then(res => res.json())
         .then(data => setallToys(data))
     },[])
 
     
-      
+      // search button click hadler
     const handleSearchButton = () =>{
-      fetch(`http://localhost:5000/allcars/searchAll/${search}`)
+      fetch(`https://toy-website-server.vercel.app/allcars/searchAll/${search}`)
       .then(res => res.json())
       .then(data => setallToys(data))
     }
 
-    // if(allToys.length > 20){
-    //  const toy = allToys.slice(0, 20)
-    //  return toy
-    // }
+   
     return (
         <div className="my-10">
             <h3 className="text-center font-bold my-5 text-3xl"><i>All <span className="text-pink-500">Toys</span></i></h3>
@@ -32,7 +31,7 @@ const AllToys = () => {
   
             <div className="text-center my-7">
   <div className="btn-group">
-    <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search…" className="input input-bordered " />
+    <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search…" className="input input-bordered " required/>
     <button onClick={handleSearchButton} className="btn btn-square  border-0 bg-gradient-to-r  from-purple-500 to-pink-500">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6  w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
     </button>

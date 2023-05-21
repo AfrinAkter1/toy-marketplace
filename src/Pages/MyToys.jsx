@@ -2,23 +2,29 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseTitle from "../UseTitle";
 
 
 
 const MyToys = () => {
     const {user, loading} = useContext(AuthContext)
-   
     const [myToys, setMyToys] = useState([])
-    const [ascending, setEsending] = useState([])
+   UseTitle("My Toys")
+
+  //  my toys fetch
     useEffect(()=>{
-        fetch(`http://localhost:5000/allcars/${user?.email}`)
+        fetch(`https://toy-website-server.vercel.app/allcars/${user?.email}`)
         .then(res => res.json())
         .then(data => setMyToys(data))
     },[user])
-    // console.log(myToys)
+
+    // loading
     if(loading){
       return 'loading.....'
     }
+
+
+    // delete data handler
        const handleDelete = (_id) =>{
       console.log(_id)
      
@@ -35,7 +41,7 @@ const MyToys = () => {
         .then((result) => {
           if (result.isConfirmed) {
 
-     fetch(`http://localhost:5000/allcars/${_id}`,{
+     fetch(`https://toy-website-server.vercel.app/allcars/${_id}`,{
           method: 'DELETE'
         })
         .then(res => res.json())
@@ -55,12 +61,23 @@ const MyToys = () => {
          }
         })
 }
-     
-      // const handleAscending = () =>{
-      //     fetch(`http://localhost:5000/allmytoy/${myToys.price}`)
-      //     .then(res => res.json())
-      //     .then(data => setEsending(data))
-      // }
+
+
+
+    //  dassending
+    const hadlDassending = () =>{
+        fetch(`https://toy-website-server.vercel.app/allmytoy/${user.email}/lowPrice`)
+        .then(res => res.json())
+        .then(data => setMyToys(data))
+       }
+
+
+      //  essending
+      const hadleassending = () =>{
+        fetch(`https://toy-website-server.vercel.app/allmytoy/${user.email}/highPrice`)
+        .then(res => res.json())
+        .then(data => setMyToys(data))
+       }
     return (
         <div>
             <div className="my-10">
@@ -68,8 +85,8 @@ const MyToys = () => {
 
   
       <div className="flex justify-end my-10 space-x-5 ">
-        <button  className="btn  border-0 bg-gradient-to-r  from-purple-500 to-pink-500">descending</button>
-        <button  className="btn   border-0 bg-gradient-to-r  from-purple-500 to-pink-500">ascending</button>
+        <button  onClick={hadlDassending}   className="btn   border-0 bg-gradient-to-r  from-purple-500 to-pink-500">descending</button>
+        <button onClick={hadleassending} className="btn   border-0 bg-gradient-to-r  from-purple-500 to-pink-500">ascending</button>
       </div>
 
 

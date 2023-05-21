@@ -10,20 +10,25 @@ const Category = () => {
     const [policeCar, setPoliceCar] = useState([])
     const [busToy , setBusToy] = useState([])
     const [privetCar, setPrivetCar] = useState([])
+
+
+    // Truck data fetch
     useEffect(() =>{
-        fetch(`http://localhost:5000/allcars?carType=Truck`)
+        fetch(`https://toy-website-server.vercel.app/allcars?carType=Truck`)
         .then(res => res.json())
         .then(data => setPoliceCar(data))
     },[])
+
+    // bus data fetch
     useEffect(() =>{
-        fetch(`http://localhost:5000/allcars?carType=bus`)
+        fetch(`https://toy-website-server.vercel.app/allcars?carType=bus`)
         .then(res => res.json())
         .then(data => setBusToy(data))
     },[])
     
-
+// Privet car fetch
     useEffect(() =>{
-        fetch(`http://localhost:5000/allcars?carType=privetCar`)
+        fetch(`https://toy-website-server.vercel.app/allcars?carType=privetCar`)
         .then(res => res.json())
         .then(data => setPrivetCar(data))
     },[])
@@ -38,10 +43,10 @@ const Category = () => {
  
 
             <Tabs>
-    <TabList>
-      <Tab> Car</Tab>
-      <Tab>Bus Toy</Tab>
-      <Tab>Privet car</Tab>
+    <TabList  className='text-pink-500 text-xl font-bold mb-10 '>
+      <Tab> <i>Truck Car</i></Tab>
+      <Tab><i>Bus Toy</i></Tab>
+      <Tab><i>Privet car</i></Tab>
     </TabList>
 
     <TabPanel>

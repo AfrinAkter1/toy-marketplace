@@ -3,13 +3,21 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip'
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init({ duration: 1200});
+
+
 
 const Navbar = () => {
     const {user, loading, logOut} = useContext(AuthContext);
+    // loading
     if(loading){
         return <progress className="progress w-56 "></progress>
     }
   
+    // log out
     const handleLogOut = () =>{
         logOut()
         .then()
@@ -17,21 +25,22 @@ const Navbar = () => {
             console.log(error.message)
         })
     }
+
+    // nav link
     const nav = <>
-    <li><Link to='/'>Home</Link></li>
+    <li><Link to='/'><i>Home</i></Link></li>
     
    {user? <>
-   <li><Link to='/alltoys'>All Toys</Link></li>
-    <li><Link to='/mytoys'>My Toys</Link></li>
-    <li><Link to='/addtoys'>Add Toy</Link></li>
+   <li><Link to='/alltoys'><i>All Toys</i></Link></li>
+    <li><Link to='/mytoys'><i>My Toys</i></Link></li>
+    <li><Link to='/addtoys'><i>Add Toy</i></Link></li>
     </> 
   :""
   }
-    <li><Link to='/blogs'>Blogs</Link></li>
-  
+    <li><Link to='/blogs'><i>Blogs</i></Link></li>
   </>
     return (
-        <div className="navbar bg-base-300 px-10">
+        <div data-aos="fade-down" className="navbar bg-base-300 px-10">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -49,7 +58,7 @@ const Navbar = () => {
     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 font-bold text-pink-500">
+    <ul className="menu menu-horizontal px-1 text-xl  text-pink-500">
      {nav}
     </ul>
   </div>

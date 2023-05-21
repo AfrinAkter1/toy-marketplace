@@ -2,6 +2,7 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate,  } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
+import UseTitle from "../UseTitle";
 
 
 
@@ -11,7 +12,8 @@ const Login = () => {
     const [error, setError] = useState("")
     const navgate = useNavigate()
     const location = useLocation()
-    console.log(location)
+    UseTitle('Login')
+  
     const from = location.state?.from?.pathname || '/'
     const handleLogin = event =>{
         event.preventDefault()
@@ -20,6 +22,7 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password)
         
+        // login email and password
         loginEmailPassword(email, password)
         .then(result => {
             console.log(result.user)
@@ -32,6 +35,8 @@ const Login = () => {
 
         })
     }
+
+    // login google
     const handleGoogle = () =>{
         loginGoogle()
         .then(result => {
@@ -44,12 +49,13 @@ const Login = () => {
     }
     return (
         <form onSubmit={handleLogin}>
-           
             <div className="hero min-h-screen bg-base-200">
+
+
           
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div >
-     <img style={{height:'400px', width:'550px'}} src="https://msinpoland.com/wp-content/uploads/2020/10/Documents-for-University.png" alt="" />
+     <img style={{height:'400px', width:'550px'}} src="https://stardatelogs.com/images/user/login.png" alt="" />
     </div>
     <div  className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div className="card-body">
