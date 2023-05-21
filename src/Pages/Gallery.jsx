@@ -1,8 +1,11 @@
 import Marquee from "react-fast-marquee";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init({ duration: 1200});
 const Gallery = () => {
     return (
-        <div className="mt-16 pl-5">
+        <div data-aos="zoom-in" className="mt-16 md:pl-5">
             <h2 className="text-4xl text-center font-bold mb-8"><i>Our  <span className="text-pink-500">Gallery</span></i></h2>
             <Marquee pauseOnHover="true">
             <div className="grid gap-11 grid-cols-3">

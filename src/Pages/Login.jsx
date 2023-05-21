@@ -36,6 +36,7 @@ const Login = () => {
         loginGoogle()
         .then(result => {
             console.log(result.user)
+            navgate(from, {replace:true})
         })
         .catch(error => {
             console.log(error.message)

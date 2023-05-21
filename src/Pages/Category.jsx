@@ -33,7 +33,7 @@ const Category = () => {
     
 
     return (
-        <div className='my-14 px-36'>
+        <div  className='my-14 md:px-36'>
             <h3 className="text-center font-bold text-3xl my-10"><i> <span className="text-pink-500">All </span>Category</i></h3>
  
 
@@ -45,7 +45,7 @@ const Category = () => {
     </TabList>
 
     <TabPanel>
-        <div className='grid md:grid-cols-2 gap-4'>
+        <div data-aos="fade-left" className='grid md:grid-cols-2 gap-4'>
         {
             policeCar.map(police => <div
             key={police._id}

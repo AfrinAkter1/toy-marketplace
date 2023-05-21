@@ -1,15 +1,30 @@
 import { Rating } from "@smastrom/react-rating";
-import { useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+
+import {  useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "./Pages/provider/AuthProvider";
+
 
 
 const ViewDetails = () => {
+  const {loading} = useContext(AuthContext)
+  
     const toys = useLoaderData()
-    console.log(toys)
+    const location = useLocation()
+    
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/' ;
+ 
+navigate(from, {replace: true})
+   
+    if(loading){
+      return <progress className="progress w-56 "></progress>
+    }
     return (
         <div className="my-16">
             <h2 className="my-8 text-4xl text-center text-pink-500 font-bold"><i>Details</i></h2>
-          <div className="card card-side bg-base-100 shadow-xl">
-  <figure><img className="w-96 p-4" src={toys.toyPicture} alt="Movie"/></figure>
+          <div className="card  grid grid-cols-2 bg-base-100 m-10 border-8 border-pink-200 shadow-xl">
+  <figure><img className="w-10/12 my-9  rounded" src={toys.toyPicture} alt="Movie"/></figure>
   <div className="card-body">
     <h2 className="card-title"><span className="text-pink-500 font-bold">Toy Name:</span> {toys.toyName}</h2>
     <p><span className="text-pink-500 font-bold">Seller Name:</span> {toys.sellerName}</p>
